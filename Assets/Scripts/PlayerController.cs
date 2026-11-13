@@ -1,0 +1,46 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerController : MonoBehaviour
+{
+    public InputAction moveAction;
+    public Vector2 moveInput;
+    //voidaan muuttaa inspectorissa
+    public float speed = 15.0f;
+    public float xRange = 20.0f;
+    public GameObject projectilePrefab;
+    public InputAction fireAction;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        moveAction.Enable();
+        fireAction.Enable();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //Pidä pelaaja rajojen sisällä
+        if (transform.position.x < -xRange)
+        {
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x > xRange)
+        {
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+        moveInput = moveAction.ReadValue<Vector2>();
+        transform.Translate(Vector3.right * moveInput.x * Time.deltaTime *  speed);
+
+        //keksin ampuminen
+        if (fireAction.triggered)
+        {
+            //debuggaus:
+            //Debug.Log("KEKSI AMMUTTU!");
+
+            //pelaaja ampuu keksin
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
+    }
+}
