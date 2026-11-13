@@ -49,7 +49,7 @@ Pelin vaihtaminen tapahtuu vaihtamalla Sceneä (katso kuvakaappaus alla).
 <image-card alt="Eläinpeli" src="screenshots/eläinpeli.png" ></image-card>
 
 ### Koirapeli
-![Koirapeli](screenshots/auto_näkymä.png)
+![Koirapeli](screenshots/koirapeli.png)
 <image-card alt="Koirapeli" src="screenshots/auto_näkymä.png" ></image-card>
 
 ### Pelin vaihto
